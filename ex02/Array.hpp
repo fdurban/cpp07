@@ -12,11 +12,15 @@ class Array{
 		Array(unsigned int n);
 		Array(const Array& src);
 		Array& operator=(const Array& src);
+		const T& operator[](unsigned int i) const;
+		T& operator[](unsigned int i) ;
+		unsigned int getSize() const;
 		~Array();
 
-}
+};
 
-template<typename T> Array<T>::Array(): elements(0), size(0);
+template<typename T> Array<T>::Array(): elements(0), size(0)
+{}
 
 template<typename T> Array<T>::Array(unsigned int num): size(num)
 {
@@ -26,7 +30,7 @@ template<typename T> Array<T>::Array(unsigned int num): size(num)
 template<typename T> Array<T>::Array(const Array& src): size(src.size)
 {
 	this->elements = new T(size);
-	for(int i = 0; i < size; i++)
+	for(unsigned int i = 0; i < size; i++)
 	{
 		this->elements[i] = src.elements[i];
 	}
@@ -55,22 +59,22 @@ Array<T>::~Array()
 }
 
 template<typename T>
-T&	Array<T>::operaror[](unsigned int i)
+T&	Array<T>::operator[](unsigned int i)
 {
-	if(i >= this->size)
-		throw std::exceotion();
-	return this->elements[i];
+	if (i >= this->size)
+		throw std::exception();
+	return (this->elements[i]);
 }
 template<typename T>
-T&	Array<T>::operaror[](unsigned int i) const
+const T&	Array<T>::operator[](unsigned int i) const
 {
-	if(i >= this->size)
-		throw std::exceotion();
+	if (i >= this->size)
+		throw std::exception();
 	return this->elements[i];
 }
 
 template<typename T>
-unsigned int	Array<T>::size() const
+unsigned int	Array<T>::getSize() const
 {
 	return (this->size);
 }
