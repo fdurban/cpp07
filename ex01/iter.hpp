@@ -1,21 +1,25 @@
+#ifndef ITER_HPP
+#define ITER_HPP
 #include <iostream>
+#include <cstddef>
 
-
-template<typename T>
-void	iter(T* array, const int length, void(*func)(T&))
+template<typename T, typename Func>
+void	iter(T* array, std::size_t length, Func func)
 {
-	for(int i = 0; i< length; i++)
+	for(std::size_t i = 0; i< length; i++)
 	{
 		func(array[i]);
 	}
 }
 
 
-template<typename T>
-void	iter(const T* array, const int length, void(*func)(const T&))
+template<typename T, typename Func>
+void	iter(const T* array, std::size_t length, Func func)
 {
-	for(int i = 0; i< length; i++)
+	for(std::size_t i = 0; i< length; i++)
 	{
 		func(array[i]);
 	}
 }
+
+#endif

@@ -1,4 +1,4 @@
-NAME = iter
+NAME = Array
 
 CPP = c++
 
@@ -10,7 +10,7 @@ SRC = main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
-HEADERS = iter.hpp
+HEADERS = Array.tpp Array.hpp
 
 all:$(NAME)
 

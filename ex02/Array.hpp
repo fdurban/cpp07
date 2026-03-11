@@ -16,6 +16,14 @@ class Array{
 		T& operator[](unsigned int i) ;
 		unsigned int getSize() const;
 		~Array();
+		class	Exception: public std::exception
+		{
+			public:
+				virtual const char* what() const throw() 
+				{
+					return ("Out of range");
+				}
+		};
 
 };
 
@@ -44,7 +52,7 @@ Array<T>&	Array<T>::operator=(const Array<T>& src)
 		delete[] elements;
 		size = src.size;
 		this->elements = new T(size);
-		for(int i = 0; i < size; i++)
+		for(unsigned int i = 0; i < size; i++)
 		{
 			this->elements[i] = src.elements[i];
 		}
@@ -62,14 +70,14 @@ template<typename T>
 T&	Array<T>::operator[](unsigned int i)
 {
 	if (i >= this->size)
-		throw std::exception();
+		throw Array::Exception();
 	return (this->elements[i]);
 }
 template<typename T>
 const T&	Array<T>::operator[](unsigned int i) const
 {
 	if (i >= this->size)
-		throw std::exception();
+		throw Array::Exception();
 	return this->elements[i];
 }
 
